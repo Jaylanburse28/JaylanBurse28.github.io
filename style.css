@@ -57,7 +57,7 @@ main {
 
 /* portfolio styles */
 #interests {
-    border: 4px rgba(23, 92, 4, 0.981) ridge;
+    border: 4px rgba(30, 129, 0, 0.981) ridge;
     padding: 8px;
 }
 h2, h3 {
@@ -70,13 +70,16 @@ h2, h3 {
         #portfolio {
             list-style-type: none;
             padding-left: 0;
+            border-radius: 10px;
+            border-style: double;
         }
 
         #portfolio li {
-            background: #ff0000;
+            background: #5f0000;
             padding: 10px;
             border-radius: 10px;
             margin-bottom: 10px;
+            border-style: double;
         }
 
         #portfolio li:hover {
@@ -138,4 +141,9 @@ h2, h3 {
                 img{
                     
                 }
+            }
+            li{
+              border-style:groove;
+              border-color: #5f0000;
+              border-width: 10px;
             }
