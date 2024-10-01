@@ -76,7 +76,10 @@
 			*/
 			function update() {
 			/*we want to increase position x value by 10*/
-				moveBoxTo(postiionX)
+			postiionX = postiionX + 10;	
+			moveBoxTo(postiionX);
+			postiionX = postiionX + 10;	
+			moveBoxTo(postiionX);
 
 			};
 
@@ -86,7 +89,8 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-
+				postiionX = 0; 
+				changeBoxText(1);
 
 			};
 
