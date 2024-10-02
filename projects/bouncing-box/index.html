@@ -76,12 +76,11 @@
 			*/
 			function update() {
 			/*we want to increase position x value by 10*/
-			postiionX = postiionX + 10;	
-			moveBoxTo(postiionX);
-			postiionX = postiionX + 10;	
-			moveBoxTo(postiionX);
-
-			};
+			positionX = positionX + speed;
+             moveBoxTo(positionX)
+             if(positionX>boardWidth){
+                speed=-10;
+			 }
 
 			/* 
 			This Function will be called each time the box is clicked. Each time it is called,
@@ -98,7 +97,7 @@
 
 
 
-		})();
+		};
 	</script>
 </body>
 
