@@ -1,41 +1,65 @@
 <!doctype html>
-
 <html>
-    <head>
-        <meta charset="utf-8">
+<head>
+    <meta charset="utf-8">
+    <title>Operation Spark || Motion Poem</title>
+    <meta name="description" content="Operation Spark Motion Poem">
+    <meta name="author" content="operationspark.org">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Operation Spark || Motion Poem</title>
-        <meta name="description" content="Operation Spark Motion Poem">
-        <meta name="author" content="operationspark.org">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/style.css" rel="stylesheet">
+
+    
+    <script src="bower_components/lodash/lodash.min.js"></script>
+    <script src="bower_components/easeljs/lib/easeljs-0.8.2.min.js"></script>
+    <script src="bower_components/opspark-draw/draw.js"></script>
+    <script src="bower_components/racket/racket.js"></script>
+
+    
+    <script src="js/opspark.js"></script>
+    <script src="js/init.js"></script>
+
+    <style type="text/css">
         
-        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-        <link href="css/style.css" rel="stylesheet">
+    </style>
+</head>
+<body>
+    <div>
+        <canvas id="canvas" width="500" height="500"></canvas>
+    </div>
+    <script id="motion-poem">
+        (function() {
+            
+            var circle; 
+            var circles = []; 
+            
+            function drawCircle() {
+                circle = draw.randomCircleInArea(canvas, true, true, "#999", 2);
+                physikz.addRandomVelocity(circle, canvas, 5, 5);
+                view.addChild(circle);
+                circles.push(circle);
+            }
 
-        <!-- all core CreateJS and 3rd party libraries are listed here: -->
-        <script src="bower_components/lodash/lodash.min.js"></script>
-        <script src="bower_components/easeljs/lib/easeljs-0.8.2.min.js"></script>
-        <script src="bower_components/opspark-draw/draw.js"></script>
-        <script src="bower_components/racket/racket.js"></script>
+            
+            for (var i = 0; i < 100; i++) {
+                drawCircle();
+            }
 
-        <!-- our app javascript code -->
-        <script src="js/opspark.js"></script>
-        <script src="js/init.js"></script>
-        
-        <style type="text/css">
-            /*override default styles here*/
-        </style>
-    </head>
-    <body>
-        <div>
-            <canvas id="canvas" width="500" height="500"></canvas>
-        </div>
-        <script id="motion-poem">
-            (function(){
-                init(window);
-                window.opspark.makeGame();
-            })();
-        </script>
-    </body>
+            
+            function update() {
+                
+                for (var i = 0; i < circles.length; i++) {
+                    
+                    physikz.updatePosition(circles[i]);
+                    game.checkCirclePosition(circles[i]);
+                }
+            }
 
+            
+            createjs.Ticker.framerate = 60;
+            createjs.Ticker.addEventListener("tick", update);
+        })();
+    </script>
+</body>
 </html>
